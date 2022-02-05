@@ -1,0 +1,117 @@
+.user__cart {
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+  flex: 1;
+  justify-content: space-evenly;
+}
+/* item__details */
+.item__details {
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  border: 1px solid rgba(128, 128, 128, 0.274);
+}
+.user__cart .left__cart {
+  width: 50% !important;
+}
+.item__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.item_left__img {
+  height: 100px;
+  width: 100px;
+  background-color: greenyellow;
+}
+.item_left__img img {
+  height: 100%;
+  width: 100%;
+}
+.item__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item__button button,
+.card_addItem button {
+  outline: none;
+  border: none;
+  margin-top: 5px;
+  cursor: pointer;
+  background-color: #808080d4;
+  padding: 0px 15px;
+  color: white;
+  border-radius: 3px;
+  font-size: 17px;
+}
+
+.item__right {
+  width: 250px;
+  padding: 10px 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.item__right p {
+  margin: 0;
+  padding: 0;
+}
+.item__right p:nth-child(2) {
+  font-size: 24px;
+  font-weight: 600;
+}
+.right__Cart {
+  height: 200px;
+  min-width: 200px;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+.right__Cart > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  text-align: start;
+}
+.right__Cart > div div {
+  display: flex;
+  width: 100%;
+}
+.cart__price {
+  font-size: 18px;
+  font-weight: 700;
+}
+@media only screen and (max-width: 900px) {
+  .product_details {
+    flex-direction: column;
+  }
+  .left_product_details {
+    order: 2;
+  }
+}
+@media only screen and (max-width: 793px) {
+  .user__cart,
+  .item__details {
+    flex-direction: column;
+    align-items: center;
+  }
+  .item__details {
+    height: auto;
+    text-align: center;
+    width: 100%;
+  }
+  .item__details p {
+    text-align: center;
+    width: 100%;
+  }
+}

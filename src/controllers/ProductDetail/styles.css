@@ -1,0 +1,107 @@
+.product_details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 16px;
+  flex: 1;
+  margin-bottom: 20px;
+}
+.left_product_details {
+  width: 50%;
+  max-width: 400px;
+}
+.left_product_details img {
+  height: 100%;
+  width: 100%;
+}
+.right_product_details {
+  width: 50%;
+}
+.right_product_details div {
+  margin: 10px;
+}
+.description {
+  font-size: 20px;
+}
+.description h4 {
+  margin-bottom: 0;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  /* letter-spacing: -0.5px; */
+  font-family: "Roboto Mono", monospace;
+}
+.card__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card__button button {
+  padding: 10px 50px;
+  outline: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 2px;
+}
+.addToCart_button {
+  background-color: #ff9f00;
+}
+.buyNow_button {
+  background-color: #fb641b;
+}
+.rating {
+  display: inline;
+  padding: 1px 15px;
+  font-size: 1.1rem;
+  background: #26a541;
+  border-radius: 99px;
+  font-weight: 700;
+  color: white;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.hover_effect {
+  height: 200px;
+  width: 200px;
+  max-height: 100;
+  position: relative;
+}
+.hover_effect img {
+  height: 100%;
+  position: absolute;
+}
+.show {
+  display: none;
+}
+@media only screen and (max-width: 900px) {
+  .product_details {
+    flex-direction: column;
+  }
+  .left_product_details {
+    order: 2;
+  }
+  .right_product_details {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 793px) {
+  .card__button {
+    flex-direction: column;
+  }
+  .card__button a {
+    width: 100%;
+  }
+  .addToCart_button,
+  .buyNow_button {
+    width: 100%;
+    padding: 20px !important;
+    margin: 5px 0;
+  }
+}

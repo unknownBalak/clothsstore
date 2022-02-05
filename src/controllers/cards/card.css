@@ -1,0 +1,30 @@
+.product__card {
+  max-width: 200px;
+  border: 1px solid #80808033;
+  margin: 5px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.card img:hover {
+  transform: scale(1.1);
+}
+.card img {
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+}
+.card_addItem div {
+  margin: 3px 0;
+}
+.meal_title p {
+  text-align: center;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  color: black;
+  background: white;
+}

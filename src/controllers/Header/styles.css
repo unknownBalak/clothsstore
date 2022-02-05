@@ -1,0 +1,25 @@
+.header {
+  min-height: 50px;
+  display: flex;
+  border: 1px solid rgba(128, 128, 128, 0.267);
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+}
+.header__subcontainer {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  margin: 0 20px;
+  justify-content: space-between;
+}
+.header__cart {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  justify-content: center;
+}
+.product__count {
+  font-size: large;
+  font-weight: 700;
+}
