@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { useDispatch } from "react-redux";
 import { increment, decrement } from "../redux_store/action/productsAction";
-function ItemDetails({ productInfo, count }) {
-  let dispatch = useDispatch();
+import { getProductsWithId } from "../FetchedItems";
 
+
+
+
+
+function ItemDetails({ productId, count }) {
+  let dispatch = useDispatch();
+  const [product, setProduct] = useState({});
   // console.log("This is nin ", productInfo);
-  let { image, price, title, id } = productInfo;
+
+  useEffect(() => {
+    async function fetchProduct(productId) {
+      let fetchedProduct = await getProductsWithId(productId);
+      setProduct(fetchedProduct.data);
+    }
+    fetchProduct(productId);
+  }, [productId]);
+
+  // let { image, price, title, id } = productInfo;
   function increaseProductQuantity(id) {
     dispatch(increment(id));
   }
@@ -17,17 +32,17 @@ function ItemDetails({ productInfo, count }) {
     <div className="item__details">
       <div className="item__left">
         <div className="item_left__img">
-          <img src={image} alt={title} />
+          <img src={product?.image} alt={product?.title} />
         </div>
         <div className="item__button">
-          <button onClick={() => decreaseProductQuantity(id)}>-</button>
+          <button onClick={() => decreaseProductQuantity(productId)}>-</button>
           {count}
-          <button onClick={() => increaseProductQuantity(id)}>+</button>
+          <button onClick={() => increaseProductQuantity(productId)}>+</button>
         </div>
       </div>
       <div className="item__right">
-        <p>{title}</p>
-        <p>₹{price}</p>
+        <p>{product?.title}</p>
+        <p>₹{product?.price}</p>
       </div>
     </div>
   );

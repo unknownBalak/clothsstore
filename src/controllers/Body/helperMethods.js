@@ -1,5 +1,5 @@
 function findCound(item, cart) {
-  let obj = cart.find((object) => object.id === item.id);
+  let obj = cart.find((object) => parseInt(object.id) === parseInt(item.id));
   if (obj) return obj.count;
   else return 0;
 }

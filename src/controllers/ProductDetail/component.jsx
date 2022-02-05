@@ -2,15 +2,22 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { increment } from "../redux_store/action/productsAction";
 import "./styles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getProductsWithId } from "../FetchedItems/index";
 
 export default function Cart() {
-  const { products, productCart } = useSelector((state) => state);
-  const product = products;
+  const { productCart } = useSelector((state) => state);
+  const [getProduct, setGetProduct] = useState({});
   let { productId } = useParams();
+  useEffect(() => {
+    async function fetchProduct(productId) {
+      let fetchedProduct = await getProductsWithId(productId);
+      setGetProduct(fetchedProduct.data);
+    }
+    fetchProduct(productId);
+  }, [productId]);
 
-  const getProduct = product[productId - 1];
-  const { image, title, description, price, rating, id } = getProduct;
+  // const { image, title, description, price, rating, id } = getProduct;
 
   const [isPresent, setPresent] = useState(false);
   console.log("This is id", productCart);
@@ -18,10 +25,13 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   useState(() => {
-    let obj = productCart.find((item) => item.id === id);
+    let obj = productCart.find(
+      (item) => parseInt(item.id) === parseInt(productId)
+    );
+    console.log("Thsi isid fd", obj, productId, productCart);
     if (obj) setPresent(true);
     else setPresent(false);
-  }, [id]);
+  }, [productId]);
 
   function addToCartItem(id) {
     dispatch(increment(id));
@@ -36,12 +46,12 @@ export default function Cart() {
   return (
     <div className="product_details">
       <div className="left_product_details">
-        <img src={image} alt={title} />
+        <img src={getProduct?.image} alt={getProduct?.title} />
         <div className="card__button">
           {!isPresent ? (
             <button
               className="addToCart_button"
-              onClick={() => addToCartItem(id)}
+              onClick={() => addToCartItem(productId)}
             >
               Add To Cart
             </button>
@@ -51,24 +61,27 @@ export default function Cart() {
             </Link>
           )}
           <Link to="/cart">
-            <button onClick={() => addItemToCart(id)} className="buyNow_button">
+            <button
+              onClick={() => addItemToCart(productId)}
+              className="buyNow_button"
+            >
               Buy Now
             </button>
           </Link>
         </div>
       </div>
       <div className="right_product_details">
-        <div className="title">{title}:</div>
+        <div className="title">{getProduct?.title}:</div>
         <div className="price">
           <span className="rupee">₹</span>
-          {price}
+          {getProduct?.price}
         </div>
         <div className="rating">
-          {rating.rate} <span className="start_icon">★</span>
+          {getProduct?.rating?.rate} <span className="start_icon">★</span>
         </div>
         <div className="description">
           <h4>Product Details:</h4>
-          <div className="description"> {description}</div>
+          <div className="description"> {getProduct?.description}</div>
         </div>
       </div>
     </div>

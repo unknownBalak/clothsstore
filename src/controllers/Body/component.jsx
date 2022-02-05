@@ -11,6 +11,7 @@ export default function Body() {
   window.setProducts = setProducts;
   let dispatch = useDispatch();
   let { products, productCart } = useSelector((state) => state);
+  sessionStorage.setItem("productCart", JSON.stringify(productCart));
   useEffect(() => {
     async function fetchData() {
       let products = await getProducts();
@@ -19,12 +20,10 @@ export default function Body() {
     }
     fetchData();
   }, [dispatch]);
-  let productCount = new Array(products.length).fill(0);
   const updatedProductWithCount = updateProductWithItsCount(
     products,
     productCart
   );
-  window.productCount = productCount;
   return (
     <div className="product__container flex-function">
       <div className="product__subcontainer flex-function">

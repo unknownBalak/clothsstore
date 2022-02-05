@@ -1,8 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ItemDetails from "./ItemDetails";
 import "./styles.css";
-import { checkout } from "../redux_store/action/productsAction";
+import { checkout, setProducts } from "../redux_store/action/productsAction";
+import { getProducts } from "../FetchedItems";
 function findTotal(productCart, products) {
   let sum = 0;
   productCart.forEach(
@@ -14,6 +15,16 @@ function findTotal(productCart, products) {
 
 function TotalProducts() {
   const { productCart, products } = useSelector((state) => state);
+  // if(products.length==0)
+  let dispatch = useDispatch();
+  useEffect(() => {
+    async function fetchData() {
+      let products = await getProducts();
+      dispatch(setProducts(products.data));
+      window.data = products.data;
+    }
+    fetchData();
+  }, [dispatch]);
   console.log(productCart);
   window.productCart = productCart;
   window.products = products;
@@ -24,11 +35,7 @@ function TotalProducts() {
         {productCart.length > 0 ? (
           productCart.map((item, index) => {
             return (
-              <ItemDetails
-                key={index}
-                count={item.count}
-                productInfo={products[item.id - 1]}
-              />
+              <ItemDetails key={index} count={item.count} productId={item.id} />
             );
           })
         ) : (
