@@ -14,9 +14,10 @@
   padding: 0 25px;
   border: 1px solid rgba(128, 128, 128, 0.274);
 }
-.user__cart .left__cart {
-  width: 50% !important;
+.user__cart .left__Cart {
+  width: 50%;
 }
+
 .item__left {
   display: flex;
   flex-direction: column;
@@ -109,9 +110,13 @@
     height: auto;
     text-align: center;
     width: 100%;
+    padding: 0;
   }
   .item__details p {
     text-align: center;
+    width: 100%;
+  }
+  .item__right {
     width: 100%;
   }
 }

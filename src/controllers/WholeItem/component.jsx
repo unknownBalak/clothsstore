@@ -21,17 +21,14 @@ function TotalProducts() {
     async function fetchData() {
       let products = await getProducts();
       dispatch(setProducts(products.data));
-      window.data = products.data;
     }
     fetchData();
   }, [dispatch]);
-  console.log(productCart);
-  window.productCart = productCart;
-  window.products = products;
+
   const totalAmount = findTotal(productCart, products);
   return (
     <div className="user__cart">
-      <div className="left__Cart" style={{ width: "50%" }}>
+      <div className="left__Cart">
         {productCart.length > 0 ? (
           productCart.map((item, index) => {
             return (
@@ -52,7 +49,7 @@ function TotalProducts() {
         <div>
           <div>Total </div> <div className="cart__price"> ₹ {totalAmount} </div>
         </div>
-        <button onClick={checkout}>checkout Product</button>
+        <button onClick={() => dispatch(checkout())}>checkout Product</button>
       </div>
     </div>
   );

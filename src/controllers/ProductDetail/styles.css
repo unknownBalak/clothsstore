@@ -89,6 +89,7 @@
   }
   .right_product_details {
     text-align: center;
+    width: 90%;
   }
 }
 @media only screen and (max-width: 793px) {
@@ -103,5 +104,15 @@
     width: 100%;
     padding: 20px !important;
     margin: 5px 0;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .product__description {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 339px) {
+  .product__description {
+    font-size: 12px;
   }
 }

@@ -3,6 +3,7 @@ import Body from "../Body/component";
 import Cart from "../ProductDetail/component";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../Header/component";
+import Footer from "./Footer";
 import TotalProducts from "../WholeItem/component";
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <Route path="/" element={<Body />} />
         <Route>404 Not Found!</Route>
       </Routes>
+      {/* <Footer /> */}
     </Router>
   );
 }

@@ -1,9 +1,6 @@
 import { ActionTypes } from "../constants/actionType";
 const initialState = {
-  productCart:
-    JSON.parse(sessionStorage.getItem("productCart")).map((item) => {
-      return { id: parseInt(item.id), count: parseInt(item.count) };
-    }) || [],
+  productCart: JSON.parse(sessionStorage.getItem("productCart")) || [],
   products: [],
 };
 function getProductDetail(arr, id) {
@@ -52,19 +49,16 @@ function updateproductCounter(state, payload) {
 }
 
 function counterReducer(state = initialState, action) {
-  console.log("action type", action.type);
   const { UPDATE_PRODUCT_COUNTER, SET_PRODUCTS, SET_CHECKOUT } = ActionTypes;
   switch (action.type) {
     case UPDATE_PRODUCT_COUNTER:
       let updatedProducts = updateproductCounter(state, action.payload);
-      console.log("threre", updatedProducts);
       sessionStorage.setItem("productCart", JSON.stringify(updatedProducts));
       return { ...state, productCart: updatedProducts };
     case SET_PRODUCTS:
       const products = action.payload;
       return { ...state, products };
     case SET_CHECKOUT:
-      console.log("Call redferere");
       return { ...state, productCart: [] };
     default:
       return state;

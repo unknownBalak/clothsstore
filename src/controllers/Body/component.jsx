@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../redux_store/action/productsAction";
 import { updateProductWithItsCount } from "./helperMethods";
 export default function Body() {
-  window.setProducts = setProducts;
   let dispatch = useDispatch();
   let { products, productCart } = useSelector((state) => state);
   sessionStorage.setItem("productCart", JSON.stringify(productCart));
@@ -16,7 +15,6 @@ export default function Body() {
     async function fetchData() {
       let products = await getProducts();
       dispatch(setProducts(products.data));
-      window.data = products.data;
     }
     fetchData();
   }, [dispatch]);

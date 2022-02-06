@@ -20,7 +20,6 @@ export default function Cart() {
   // const { image, title, description, price, rating, id } = getProduct;
 
   const [isPresent, setPresent] = useState(false);
-  console.log("This is id", productCart);
 
   const dispatch = useDispatch();
 
@@ -28,7 +27,6 @@ export default function Cart() {
     let obj = productCart.find(
       (item) => parseInt(item.id) === parseInt(productId)
     );
-    console.log("Thsi isid fd", obj, productId, productCart);
     if (obj) setPresent(true);
     else setPresent(false);
   }, [productId]);
@@ -81,7 +79,7 @@ export default function Cart() {
         </div>
         <div className="description">
           <h4>Product Details:</h4>
-          <div className="description"> {getProduct?.description}</div>
+          <div className="product__description"> {getProduct?.description}</div>
         </div>
       </div>
     </div>
