@@ -1,0 +1,15 @@
+.footer {
+  border: 1px solid gray;
+  margin-bottom: 2px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: medium;
+  font-weight: 700;
+}
+
+.footer__heart {
+  color: red;
+  font-size: 25px;
+}
