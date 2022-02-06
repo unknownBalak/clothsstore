@@ -10,7 +10,7 @@ import { updateProductWithItsCount } from "./helperMethods";
 export default function Body() {
   let dispatch = useDispatch();
   let { products, productCart } = useSelector((state) => state);
-  sessionStorage.setItem("productCart", JSON.stringify(productCart));
+  // sessionStorage.setItem("productCart", JSON.stringify(productCart));
   useEffect(() => {
     async function fetchData() {
       let products = await getProducts();
