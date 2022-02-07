@@ -18,9 +18,12 @@ function Header() {
         <div className="header_icon">
           <Link to="/"> Home </Link>
         </div>
-        <div className="header__cart">
-          🛒<span className="product__count"> ({countProduct(store)})</span>{" "}
-        </div>
+        <Link to="/cart">
+          {" "}
+          <div className="header__cart">
+            🛒<span className="product__count"> ({countProduct(store)})</span>
+          </div>
+        </Link>
       </div>
     </div>
   );
